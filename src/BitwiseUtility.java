@@ -6,7 +6,7 @@ public class BitwiseUtility {
     private long player2Board;
     private long kingBoard; // To track kings for both players
 
-    // Initialize the board with pieces and kings (kings start empty)
+    // Initialize the board with pieces and kings 
     public void initializeBoard() {
         player1Board = 0x00000000000FFF00L;  // Player 1 Pieces
         player2Board = 0xFFF0000000000000L;  // Player 2 Pieces
@@ -49,8 +49,8 @@ public class BitwiseUtility {
     }
 
 
-    // Check if a move is legal (including king moves)
-    // Check if a move is legal (diagonal, valid squares, and respecting boundaries)
+    
+    // Check if a move is legal (diagonal, valid squares,kings,  and respecting boundaries)
     public boolean isLegalMove(int fromPos, int toPos, boolean isPlayer1) {
         // Ensure moves are on dark (playable) squares
         if ((fromPos % 8 + toPos % 8) % 2 == 0) {
@@ -67,7 +67,7 @@ public class BitwiseUtility {
         int rowDiff = (toPos / 8) - (fromPos / 8);
         int colDiff = Math.abs(toPos % 8 - fromPos % 8);
 
-        // Move must be diagonal (colDiff should be 1 for simple moves)
+        // Move must be diagonal
         if (colDiff != 1) {
             System.out.println("Invalid move: You must move diagonally.");
             return false;
